@@ -1,0 +1,10 @@
+{
+  "description": "Transform campus announcements into a clear, actionable plan for students, prioritizing tasks, deadlines, and opportunities while reducing information overload.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
