@@ -1,0 +1,576 @@
+Design a premium, modern **desktop web application** called **“Untangled”**, inspired by the attached visual reference.
+
+IMPORTANT:
+Use the reference only for its **visual language and aesthetic**, NOT its mobile layout or content.
+
+The website must be designed specifically for a **laptop/desktop screen**, approximately 1440 × 900 px. Do NOT create phone mockups or mobile screens.
+
+## PRODUCT
+
+Name: Untangled
+
+Tagline:
+**50 messages. One clear plan.**
+
+Purpose:
+Untangled is an AI-powered campus information assistant that takes a chaotic stream of college announcements and turns them into a clear, prioritized and actionable plan.
+
+It helps students understand:
+
+* What needs attention now
+* What they need to do
+* What deadlines are approaching
+* Which events conflict
+* Which opportunities they might miss
+* Which announcements contain incomplete information
+
+The product should feel calm and effortless despite dealing with information overload.
+
+---
+
+# VISUAL STYLE
+
+Take strong visual inspiration from the attached reference.
+
+Use:
+
+* Warm off-white / cream background
+* Soft peach, blush and subtle yellow gradients
+* Large rounded rectangular cards
+* Very generous whitespace
+* Black/dark charcoal typography
+* Minimal interface
+* Soft shadows
+* Thin subtle borders
+* Rounded buttons
+* Small colorful status indicators
+* Elegant oversized headings
+* Friendly, premium, editorial aesthetic
+* Soft gradient blobs/abstract shapes used sparingly
+* Smooth visual hierarchy
+
+The design should feel like:
+**Apple-inspired + modern productivity app + premium student product.**
+
+Avoid:
+
+* Dark mode
+* Typical blue SaaS dashboards
+* Excessive neon
+* Excessive glassmorphism
+* Generic AI chatbot appearance
+* Corporate/enterprise styling
+* Dense tables
+* Overly complicated dashboards
+
+Use a sophisticated serif or elegant display font sparingly for major headings if appropriate, paired with a clean modern sans-serif for UI text.
+
+---
+
+# SCREEN 1 — WELCOME
+
+Create a full desktop landing page.
+
+Left side:
+Large heading:
+
+**Campus chaos?
+We've got it untangled.**
+
+Supporting text:
+
+“Turn hundreds of campus announcements into the deadlines, actions, conflicts and opportunities that actually matter.”
+
+Primary button:
+
+**Get Started →**
+
+Secondary text:
+
+“Less scrolling. More clarity.”
+
+Right side:
+Create an abstract visual representing tangled information becoming organized.
+
+For example:
+Multiple floating announcement cards, message bubbles and deadline chips gradually flowing into one clean central card labeled:
+
+**Your Action Plan**
+
+Use soft peach/yellow gradients.
+
+Do not make the illustration overly complex.
+
+---
+
+# SCREEN 2 — PERSONALIZATION
+
+Desktop onboarding screen with a centered large rounded content card.
+
+Heading:
+
+**Let's make Untangled yours.**
+
+Subheading:
+
+“Tell us a little about your campus life so we know what deserves your attention.”
+
+Create clean selection components:
+
+### Year
+
+○ First Year
+○ Second Year
+○ Third Year
+○ Fourth Year
+
+### Branch
+
+[ Computer Science & Engineering ]
+
+### What interests you?
+
+Create rounded selectable pills:
+
+AI & Technology
+Hackathons
+Societies
+Workshops
+Scholarships
+Sports
+Competitions
+Research
+
+Selected options should have a subtle peach/orange highlight.
+
+Bottom-right:
+
+**Continue →**
+
+Add a small progress indicator:
+
+**01 / 03**
+
+---
+
+# SCREEN 3 — CONNECT YOUR SOURCES
+
+Heading:
+
+**Bring everything together.**
+
+Subheading:
+
+“Your campus information is scattered. Untangled brings it into one place.”
+
+Create four large rounded source cards arranged in a clean desktop grid:
+
+### College Email
+
+23 new updates
+✓ Connected
+
+### Class Groups
+
+47 new updates
+✓ Connected
+
+### Society Channels
+
+18 new updates
+✓ Connected
+
+### College Notices
+
+12 new updates
+✓ Connected
+
+At the bottom:
+
+**100 updates waiting to be untangled**
+
+Large primary button:
+
+**Sync Everything →**
+
+Small text:
+
+“Untangled organizes your updates without hiding opportunities or filling gaps with assumptions.”
+
+---
+
+# SCREEN 4 — AI PROCESSING
+
+Create a visually beautiful full-screen processing state.
+
+Use a large soft peach/yellow gradient orb or abstract visual in the center.
+
+Heading:
+
+**Untangling your campus…**
+
+Subheading:
+
+“Finding what matters without losing what doesn't.”
+
+Show a vertical or circular processing sequence:
+
+✓ Reading announcements
+✓ Grouping repeated updates
+✓ Extracting deadlines
+✓ Detecting schedule conflicts
+✓ Finding opportunities
+✓ Checking incomplete information
+
+At the bottom show:
+
+**100 announcements → 67 meaningful updates**
+
+Use subtle animated-looking progress elements.
+
+The screen should feel calm and intelligent rather than technical.
+
+---
+
+# SCREEN 5 — MAIN DASHBOARD
+
+This is the MOST IMPORTANT screen.
+
+Create a beautiful desktop dashboard.
+
+Use a spacious layout rather than a dense admin dashboard.
+
+Top navigation:
+
+**Untangled**
+
+Overview
+Action Plan
+Schedule
+Opportunities
+Updates
+
+Right side:
+🔔
+Profile
+
+Main heading:
+
+**Good afternoon 👋**
+
+Large supporting text:
+
+**We've untangled 50 updates for you.**
+
+Then create a large central **Action Plan** card.
+
+---
+
+## ACTION PLAN
+
+Heading:
+
+**Your Action Plan**
+
+Small text:
+
+**5 things need your attention**
+
+Create beautiful checklist cards.
+
+### ☐ Register for AI Workshop
+
+**Today · 8:00 PM**
+
+12 seats remaining
+
+URGENT
+
+---
+
+### ☐ Submit Scholarship Application
+
+**Today · 11:59 PM**
+
+Deadline approaching
+
+HIGH PRIORITY
+
+---
+
+### ☐ Complete Coding Society Registration
+
+**Deadline not mentioned**
+
+Missing information
+
+---
+
+### ☐ Register for National Hackathon
+
+**September 25**
+
+Upcoming
+
+---
+
+When an item is completed, its checkbox becomes:
+
+**✓**
+
+and the card becomes visually muted.
+
+---
+
+# DASHBOARD SECONDARY SECTIONS
+
+Below or beside the Action Plan, create smaller cards.
+
+### ⚠️ Schedule Conflict
+
+**AI Workshop**
+3:00 – 5:00 PM
+
+**Coding Society Meeting**
+4:00 – 6:00 PM
+
+Highlight:
+
+**1 hour overlap**
+
+Button:
+**Review**
+
+---
+
+### 📅 Coming Up
+
+Scholarship — Sep 20
+Hackathon — Sep 25
+Society Recruitment — Sep 27
+
+---
+
+### ✨ Opportunities
+
+Show opportunities that are not necessarily urgent but should remain discoverable.
+
+AI Workshop
+National Hackathon
+Research Talk
+
+Button:
+**Explore all**
+
+---
+
+# SCREEN 6 — ANNOUNCEMENT DETAIL
+
+When the student clicks an action item, open a beautiful large rounded detail panel.
+
+Heading:
+
+**AI Workshop**
+
+Badge:
+
+**URGENT**
+
+Large text:
+
+**Registration closes today at 8:00 PM.**
+
+Then:
+
+### What do I need to do?
+
+Register for the workshop before the deadline.
+
+### Why am I seeing this?
+
+“Registration has a near-term deadline and only 12 seats remain.”
+
+### Information check
+
+✓ Deadline found
+✓ Limited seats mentioned
+⚠ Venue not mentioned
+
+### Source
+
+College Tech Club
+College Email
+
+Add a button:
+
+**View Original Announcement**
+
+The original announcement should appear inside a smaller rounded card.
+
+---
+
+# SCREEN 7 — CONFLICT DETAIL
+
+Create a visual timeline instead of a boring table.
+
+Heading:
+
+**You have a schedule conflict**
+
+Show:
+
+3:00 PM
+──────────────
+AI Workshop
+──────────────
+5:00 PM
+
+4:00 PM
+──────────────
+Coding Society Meeting
+──────────────
+6:00 PM
+
+Clearly highlight:
+
+**Overlap: 4:00 – 5:00 PM**
+
+Then show:
+
+“Untangled found an overlap between these commitments.”
+
+Important:
+Do NOT tell the student which event to choose.
+
+Button:
+
+**View both details**
+
+---
+
+# SCREEN 8 — ALL UPDATES
+
+Create a clean information feed.
+
+Heading:
+
+**Everything, finally untangled.**
+
+Top filter pills:
+
+All
+Urgent
+Upcoming
+Opportunities
+Completed
+No Action Required
+
+Each announcement appears as a rounded card containing:
+
+Title
+Source
+Date/deadline
+Priority
+Action status
+
+Repeated announcements should appear as one grouped card.
+
+Example:
+
+**AI Workshop**
+
+Mentioned in:
+College Email · AI Club · Class Group
+
+**3 announcements grouped**
+
+Button:
+**View details**
+
+---
+
+# SCREEN 9 — INFORMATION GAP
+
+Create a special state for incomplete information.
+
+Heading:
+
+**Something's missing.**
+
+Example card:
+
+### Coding Society Recruitment
+
+Registration is open.
+
+⚠ **Deadline not mentioned**
+
+Text:
+
+“Untangled couldn't find a deadline in the original announcement.”
+
+Button:
+
+**View Original**
+
+Important:
+Never invent or estimate missing information.
+
+---
+
+# INTERACTION STYLE
+
+Create the prototype so that these interactions feel connected:
+
+Welcome
+→ Get Started
+→ Personalization
+→ Sources
+→ Sync
+→ AI Processing
+→ Dashboard
+
+Dashboard:
+Action item
+→ Detail
+
+Conflict
+→ Conflict detail
+
+Opportunity
+→ Opportunity detail
+
+Navigation:
+Overview
+Action Plan
+Schedule
+Opportunities
+Updates
+
+Checklist:
+Unchecked → Checked → Completed state
+
+---
+
+# BRAND PERSONALITY
+
+Untangled should feel:
+
+Calm
+Smart
+Friendly
+Trustworthy
+Effortless
+Student-focused
+
+The visual idea is:
+
+**Messy information outside → calm clarity inside.**
+
+Use the warm pastel visual language throughout the entire product so every screen feels like part of the same brand.
+
+Make the final design look like a **real consumer product that could launch**, not a college assignment.
+
+Desktop only.
+1440 × 900 primary frame.
+Responsive principles may be considered, but prioritize the desktop/laptop experience.
