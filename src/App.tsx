@@ -1215,7 +1215,7 @@ export default function App() {
   return (
     
   <>
-    <Show when="signed-out">
+    <Show when="signed-out" treatPendingAsSignedOut={false}>
   {showSignIn ? (
     <SignInPage />
   ) : showSignUp ? (
