@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import SignInPage from "../sign";
-import { Show } from "@clerk/react";
+import { Show, UserButton } from "@clerk/react";
 
 // ─── Semantic color system ─────────────────────────────────────────────────────
 // Coral   #E8674A  → Urgent / deadline / immediate
@@ -544,8 +544,7 @@ function Dashboard({onDetail,onConflict,onOpps,onInfoGap}:{onDetail:(id:string)=
             <button className="relative w-9 h-9 rounded-xl hover:bg-[#F5EDE5] flex items-center justify-center text-[#6A625A] transition-colors">
               🔔<span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#E8674A] rounded-full border border-white"/>
             </button>
-            <div className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm text-white"
-              style={{background:"linear-gradient(135deg,#E8674A,#8B6FE8)"}}>A</div>
+            <UserButton />
           </div>
         </div>
       </header>
