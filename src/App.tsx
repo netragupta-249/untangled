@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import SignInPage from "../sign";
-import { Show, UserButton } from "@clerk/react";
+import { Show, UserButton , SignUp} from "@clerk/react";
 
 // ─── Semantic color system ─────────────────────────────────────────────────────
 // Coral   #E8674A  → Urgent / deadline / immediate
@@ -80,7 +80,7 @@ function C({children,className="",style={}}:{children:React.ReactNode;className?
 }
 
 // ─── SCREEN 1: Welcome ─────────────────────────────────────────────────────────
-function Welcome({go}:{go:()=>void}) {
+function Welcome({go,signIn}:{go:()=>void;signIn:()=>void}) {
   return (
     <div className="min-h-screen bg-[#FAF7F2] flex flex-col">
       <nav className="px-14 py-5 flex items-center justify-between">
@@ -230,9 +230,19 @@ function Welcome({go}:{go:()=>void}) {
 }
 
 // ─── SCREEN 2: Personalization ────────────────────────────────────────────────
-function Personal({go}:{go:()=>void}) {
+function Personal({
+  go,
+  onComplete
+}:{
+  go:()=>void;
+  onComplete?:(data:{
+    year:string;
+    branch:string;
+    interests:string[];
+  })=>void;
+})  {
   const [year,setYear] = useState("First Year");
-  const [branch,setBranch] = useState("Computer Science & Engineering");
+  const [branch,setBranch] = useState("Computer Science and Engineering");
   const [sel,setSel] = useState(["AI & Technology","Hackathons","Workshops"]);
   const pills = ["AI & Technology","Hackathons","Societies","Workshops","Scholarships","Sports","Competitions","Research"];
   const pillColors = ["#8B6FE8","#E8674A","#F09060","#4A90E0","#F0BC3A","#52B788","#E8674A","#4A90E0"];
@@ -284,8 +294,18 @@ function Personal({go}:{go:()=>void}) {
                 <select value={branch} onChange={e=>setBranch(e.target.value)}
                   className="w-full py-3.5 px-4 pr-10 rounded-2xl border border-[#EDE7DF] bg-[#FDFAF7] text-[#1C1917] text-sm font-medium outline-none appearance-none transition-all"
                   style={{}}>
-                  {["Computer Science & Engineering","Electronics & Communication","Mechanical Engineering","Civil Engineering","Information Technology"].map(b=>(
-                    <option key={b}>{b}</option>
+                  {[
+  "Computer Science and Engineering",
+  "Computer Science and Engineering (Artificial intelligence)",
+  "Computer Science and Engineering (Cyber Security)",
+  "Information Technology",
+  "Mathematics and Computing",
+  "Electronics and Communication Engineering",
+  "Electronics and Communication Engineering (Artificial Intelligence)",
+  "Mechanical and Automation Engineering",
+  "Artificial Intelligence and Machine Learning",
+  "Robotics and Artificial Intelligence"
+].map(b=>(                    <option key={b}>{b}</option>
                   ))}
                 </select>
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[#A09890] pointer-events-none">▾</div>
@@ -322,7 +342,16 @@ function Personal({go}:{go:()=>void}) {
 
           <div className="flex items-center justify-between mt-8 pt-6 border-t border-[#F0EAE2]">
             <span className="text-sm text-[#B0A898]">Almost there →</span>
-            <GradBtn onClick={go} sm>Continue →</GradBtn>
+            <GradBtn
+  onClick={() =>
+    onComplete
+      ? onComplete({year, branch, interests:sel})
+      : go()
+  }
+  sm
+>
+  Continue →
+</GradBtn>
           </div>
         </C>
       </div>
@@ -1164,18 +1193,52 @@ function InfoGap({back}:{back:()=>void}) {
 
 // ─── Root ─────────────────────────────────────────────────────────────────────
 export default function App() {
-  const [screen,setScreen] = useState<Screen>("dash");
-  const [taskId,setTaskId] = useState("1");
+  const [screen, setScreen] = useState<Screen>("dash");
+  const [taskId, setTaskId] = useState("1");
   const [showSignIn, setShowSignIn] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false);
+  const [onboardingStep, setOnboardingStep] = useState<"welcome" | "personal">("welcome");
+  const [onboardingData, setOnboardingData] = useState<{
+    year: string;
+    branch: string;
+    interests: string[];
+  } | null>(null);
 
   return (
     
   <>
     <Show when="signed-out">
-       {showSignIn ? (
+  {showSignIn ? (
     <SignInPage />
+  ) : showSignUp ? (
+    <div className="min-h-screen flex items-center justify-center bg-[#FAF7F2] p-6">
+      <SignUp
+        unsafeMetadata={onboardingData ?? undefined}
+        appearance={{
+          variables: {
+            colorPrimary: "#E8674A",
+            colorForeground: "#1C1917",
+            colorBackground: "#FFFFFF",
+            colorInput: "#FDFAF7",
+            colorInputForeground: "#1C1917",
+            borderRadius: "16px",
+          },
+        }}
+      />
+    </div>
+  ) : onboardingStep === "personal" ? (
+    <Personal
+      go={() => setOnboardingStep("welcome")}
+      onComplete={(data) => {
+        setOnboardingData(data);
+        setShowSignUp(true);
+      }}
+    />
   ) : (
-    <Welcome go={() => setShowSignIn(true)} />
+    <Welcome
+      go={() => setOnboardingStep("personal")}
+      signIn={() => setShowSignIn(true)}
+    />
   )}
 </Show>
 
