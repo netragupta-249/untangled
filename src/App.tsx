@@ -88,7 +88,7 @@ function Welcome({go,signIn}:{go:()=>void;signIn:()=>void}) {
         <div className="flex items-center gap-6 text-sm font-medium text-[#8A8078]">
           <a className="hover:text-[#1C1917] transition-colors cursor-pointer">How it works</a>
           <a className="hover:text-[#1C1917] transition-colors cursor-pointer">For students</a>
-          <button onClick={go} className="px-5 py-2.5 rounded-xl bg-[#1C1917] text-white hover:bg-[#2C2921] transition-colors">
+          <button onClick={signIn} className="px-5 py-2.5 rounded-xl bg-[#1C1917] text-white hover:bg-[#2C2921] transition-colors">
             Sign in
           </button>
         </div>
