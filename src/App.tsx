@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import SignInPage from "../sign";
-import { Show, UserButton , SignUp} from "@clerk/react";
+import { Show, UserButton , SignUp,useAuth} from "@clerk/react";
 
 // ─── Semantic color system ─────────────────────────────────────────────────────
 // Coral   #E8674A  → Urgent / deadline / immediate
@@ -1203,6 +1203,14 @@ export default function App() {
     branch: string;
     interests: string[];
   } | null>(null);
+    const { isLoaded } = useAuth();
+    if (!isLoaded) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF7F2]">
+        <div className="text-[#6A625A] text-sm">Loading Untangled...</div>
+      </div>
+    );
+  }
 
   return (
     
