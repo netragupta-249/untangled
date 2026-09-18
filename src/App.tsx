@@ -1167,12 +1167,17 @@ function InfoGap({back}:{back:()=>void}) {
 export default function App() {
   const [screen,setScreen] = useState<Screen>("welcome");
   const [taskId,setTaskId] = useState("1");
+  const [showSignIn, setShowSignIn] = useState(false);
 
   return (
     
   <>
     <Show when="signed-out">
-  <SignInPage />
+       {showSignIn ? (
+    <SignInPage />
+  ) : (
+    <Welcome go={() => setShowSignIn(true)} />
+  )}
 </Show>
 
 <Show when="signed-in">
