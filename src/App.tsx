@@ -1165,7 +1165,7 @@ function InfoGap({back}:{back:()=>void}) {
 
 // ─── Root ─────────────────────────────────────────────────────────────────────
 export default function App() {
-  const [screen,setScreen] = useState<Screen>("welcome");
+  const [screen,setScreen] = useState<Screen>("dash");
   const [taskId,setTaskId] = useState("1");
   const [showSignIn, setShowSignIn] = useState(false);
 
@@ -1181,7 +1181,6 @@ export default function App() {
 </Show>
 
 <Show when="signed-in">
-  {screen==="welcome"    && <Welcome go={()=>setScreen("personal")}/>}
   {screen==="personal"   && <Personal go={()=>setScreen("sources")}/>}
   {screen==="sources"    && <Sources go={()=>setScreen("processing")}/>}
   {screen==="processing" && <Processing go={()=>setScreen("dash")}/>}
