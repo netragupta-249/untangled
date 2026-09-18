@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import SignInPage from "../sign";
-import { SignedIn, SignedOut } from "@clerk/react";
+import { Show } from "@clerk/react";
 
 // ─── Semantic color system ─────────────────────────────────────────────────────
 // Coral   #E8674A  → Urgent / deadline / immediate
@@ -1169,25 +1169,26 @@ export default function App() {
   const [taskId,setTaskId] = useState("1");
 
   return (
+    
   <>
-    <SignedOut>
-      <SignInPage />
-    </SignedOut>
+    <Show when="signed-out">
+  <SignInPage />
+</Show>
 
-    <SignedIn>
-      {screen==="welcome"    && <Welcome go={()=>setScreen("personal")}/>}
-      {screen==="personal"   && <Personal go={()=>setScreen("sources")}/>}
-      {screen==="sources"    && <Sources go={()=>setScreen("processing")}/>}
-      {screen==="processing" && <Processing go={()=>setScreen("dash")}/>}
-      {screen==="dash"       && <Dashboard
-        onDetail={id=>{setTaskId(id);setScreen("detail");}}
-        onConflict={()=>setScreen("conflict")}
-        onOpps={()=>setScreen("opps")}
-        onInfoGap={()=>setScreen("info-gap")}/>}
-      {screen==="detail"     && <Detail id={taskId} back={()=>setScreen("dash")}/>}
-      {screen==="conflict"   && <Conflict back={()=>setScreen("dash")}/>}
-      {screen==="info-gap"   && <InfoGap back={()=>setScreen("dash")}/>}
-    </SignedIn>
+<Show when="signed-in">
+  {screen==="welcome"    && <Welcome go={()=>setScreen("personal")}/>}
+  {screen==="personal"   && <Personal go={()=>setScreen("sources")}/>}
+  {screen==="sources"    && <Sources go={()=>setScreen("processing")}/>}
+  {screen==="processing" && <Processing go={()=>setScreen("dash")}/>}
+  {screen==="dash"       && <Dashboard
+    onDetail={id=>{setTaskId(id);setScreen("detail");}}
+    onConflict={()=>setScreen("conflict")}
+    onOpps={()=>setScreen("opps")}
+    onInfoGap={()=>setScreen("info-gap")}/>}
+  {screen==="detail"     && <Detail id={taskId} back={()=>setScreen("dash")}/>}
+  {screen==="conflict"   && <Conflict back={()=>setScreen("dash")}/>}
+  {screen==="info-gap"   && <InfoGap back={()=>setScreen("dash")}/>}
+</Show>
   </>
 );
 }
