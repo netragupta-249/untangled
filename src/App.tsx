@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import SignInPage from "../sign";
+import { SignedIn, SignedOut } from "@clerk/react";
 
 // ─── Semantic color system ─────────────────────────────────────────────────────
 // Coral   #E8674A  → Urgent / deadline / immediate
@@ -1167,7 +1169,12 @@ export default function App() {
   const [taskId,setTaskId] = useState("1");
 
   return (
-    <>
+  <>
+    <SignedOut>
+      <SignInPage />
+    </SignedOut>
+
+    <SignedIn>
       {screen==="welcome"    && <Welcome go={()=>setScreen("personal")}/>}
       {screen==="personal"   && <Personal go={()=>setScreen("sources")}/>}
       {screen==="sources"    && <Sources go={()=>setScreen("processing")}/>}
@@ -1180,6 +1187,7 @@ export default function App() {
       {screen==="detail"     && <Detail id={taskId} back={()=>setScreen("dash")}/>}
       {screen==="conflict"   && <Conflict back={()=>setScreen("dash")}/>}
       {screen==="info-gap"   && <InfoGap back={()=>setScreen("dash")}/>}
-    </>
-  );
+    </SignedIn>
+  </>
+);
 }
