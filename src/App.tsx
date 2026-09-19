@@ -388,7 +388,7 @@ function Personal({
 }
 
 // ─── SCREEN 3: Sources ────────────────────────────────────────────────────────
-function Sources({go}:{go:()=>void}) {
+function Sources({go,setCleanedFeed}:{go:()=>void;setCleanedFeed:(data:any[])=>void}) {
   const [isLoading, setIsLoading] = useState(false);
 
   const handlePurifyFeeds = async () => {
@@ -405,7 +405,7 @@ function Sources({go}:{go:()=>void}) {
     const purifiedTimeline =
       await runAutonomousUnclutter(rawMessyMessages);
 
-    console.log("AI RESULT:", purifiedTimeline);
+    console.log("AI RESULT:", purifiedTimeline); setCleanedFeed(purifiedTimeline);
 
     setIsLoading(false);
     go();
@@ -1248,6 +1248,7 @@ export default function App() {
   const [taskId, setTaskId] = useState("1");
   const [showSignIn, setShowSignIn] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
+  const [cleanedFeed, setCleanedFeed] = useState<any[]>([]);
   const [onboardingStep, setOnboardingStep] = useState<"welcome" | "personal">("welcome");
   const [onboardingData, setOnboardingData] = useState<{
     year: string;
@@ -1314,7 +1315,7 @@ useEffect(() => {
   {screen==="personal"   && <Personal go={()=>setScreen("sources")}/>}
   {screen==="sources"    && <Sources go={()=>setScreen("processing")}/>}
   {screen==="processing" && <Processing go={()=>setScreen("dash")}/>}
-  {screen==="dash"       && <Dashboard
+  {screen==="dash"       && <Dashboard cleanedFeed={cleanedFeed}
     onDetail={id=>{setTaskId(id);setScreen("detail");}}
     onConflict={()=>setScreen("conflict")}
     onOpps={()=>setScreen("opps")}
