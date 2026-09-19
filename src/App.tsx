@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import SignInPage from "../sign";
-import { Show, UserButton , SignUp,useAuth} from "@clerk/react";
+import { Show, UserButton , SignUp, useAuth} from "@clerk/react";
 
 // ─── Semantic color system ─────────────────────────────────────────────────────
 // Coral   #E8674A  → Urgent / deadline / immediate
