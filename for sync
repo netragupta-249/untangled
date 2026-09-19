@@ -1,0 +1,21 @@
+const sendChatDataToAIEngine = async (rawMessagesArray: string[]) => {
+  try {
+    // 🔗 Shoot the messy strings straight to the local Python AI server!
+    const response = await fetch('http://localhost:8000/api/process-feeds', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ messages: rawMessagesArray }),
+    });
+
+    // 📥 Receive the structured JSON objects array back from Llama 3.1
+    const cleanAIData = await response.json();
+    console.log("Purified Timeline from Local AI:", cleanAIData);
+    
+    // TODO: Map 'cleanAIData' array directly onto your UI display state variables!
+    // Every object contains: .urgency ("CRITICAL"/"MODERATE"/"LOW"), .headline, .action_item, and .deadline
+  } catch (error) {
+    console.error("Link to the local Python AI engine failed:", error);
+  }
+};
