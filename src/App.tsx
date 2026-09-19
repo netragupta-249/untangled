@@ -1255,7 +1255,7 @@ export default function App() {
 <Show when="signed-in">
   {screen==="personal"   && <Personal go={()=>setScreen("sources")}/>}
   {screen==="sources"    && <Sources go={()=>setScreen("processing")}/>}
-  {screen==="processing" && <Processing go={()=>setScreen("dash")}/>}
+  {screen==="processing" && <Processing go={()=>setScreen("sources")}/>}
   {screen==="dash"       && <Dashboard
     onDetail={id=>{setTaskId(id);setScreen("detail");}}
     onConflict={()=>setScreen("conflict")}
