@@ -24,7 +24,7 @@ const runAutonomousUnclutter = async (messageList: string[]) => {
     "containing urgency, headline, action_item and deadline.";
 
   try {
-    const response = await fetch("http://127.0.0.1:11434/api/generate", {
+    const response = await fetch("/api/process-feeds", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -575,7 +575,7 @@ const TASKS:Task[] = [
 ];
 
 // ─── SCREEN 5: Dashboard ──────────────────────────────────────────────────────
-function Dashboard({onDetail,onConflict,onOpps,onInfoGap}:{onDetail:(id:string)=>void;onConflict:()=>void;onOpps:()=>void;onInfoGap:()=>void}) {
+function Dashboard({onDetail,onConflict,onOpps,onInfoGap,cleanedFeed}:{onDetail:(id:string)=>void;onConflict:()=>void;onOpps:()=>void;onInfoGap:()=>void;cleanedFeed:any[]}) {
   const [nav,setNav] = useState<NavItem>("overview");
   const [checked,setChecked] = useState<string[]>([]);
   const toggle=(id:string)=>setChecked(p=>p.includes(id)?p.filter(x=>x!==id):[...p,id]);
