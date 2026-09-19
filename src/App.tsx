@@ -579,6 +579,17 @@ function Dashboard({onDetail,onConflict,onOpps,onInfoGap,cleanedFeed}:{onDetail:
   const [nav,setNav] = useState<NavItem>("overview");
   const [checked,setChecked] = useState<string[]>([]);
   const toggle=(id:string)=>setChecked(p=>p.includes(id)?p.filter(x=>x!==id):[...p,id]);
+  const displayTasks:Task[] = cleanedFeed.length > 0
+  ? cleanedFeed.map((item, index) => ({
+      id: String(index + 1),
+      title: item.headline || item.action_item || "Untitled update",
+      deadline: item.deadline || "Deadline not mentioned",
+      p: item.urgency || "action",
+      source: "AI Processed",
+      detail: item.action_item || undefined,
+    }))
+  : TASKS;
+
 
   const navItems:[NavItem,string][] = [
     ["overview","Overview"],
@@ -610,9 +621,9 @@ function Dashboard({onDetail,onConflict,onOpps,onInfoGap,cleanedFeed}:{onDetail:
                     fontWeight:active?700:500,
                   }}>
                   {label}
-                  {id==="action"&&(TASKS.length-checked.length>0)&&(
+                  {id==="action"&&(displayTasks.length-checked.length>0)&&(
                     <span className="absolute -top-0.5 -right-0.5 text-[9px] font-bold text-white rounded-full w-4 h-4 flex items-center justify-center"
-                      style={{background:"#E8674A"}}>{TASKS.length-checked.length}</span>
+                      style={{background:"#E8674A"}}>{displayTasks.length-checked.length}</span>
                   )}
                 </button>
               );
@@ -666,7 +677,7 @@ function Dashboard({onDetail,onConflict,onOpps,onInfoGap,cleanedFeed}:{onDetail:
                   <div>
                     <h2 className="font-['DM_Serif_Display',serif] text-2xl text-[#1C1917]">Your Action Plan</h2>
                     <p className="text-sm text-[#A09890] mt-0.5">
-                      {TASKS.length-checked.length} of {TASKS.length} things need your attention
+                      {displayTasks.length-checked.length} of {displayTasks.length} things need your attention
                     </p>
                   </div>
                   <div className="flex items-center gap-5">
@@ -674,9 +685,9 @@ function Dashboard({onDetail,onConflict,onOpps,onInfoGap,cleanedFeed}:{onDetail:
                     <div className="flex items-center gap-3">
                       <div className="w-32 bg-[#EDE7DF] rounded-full h-2">
                         <div className="h-2 rounded-full transition-all duration-500"
-                          style={{width:`${(checked.length/TASKS.length)*100}%`,background:"#52B788"}}/>
+                          style={{width:`${(checked.length/displayTasks.length)*100}%`,background:"#52B788"}}/>
                       </div>
-                      <span className="text-sm font-semibold" style={{color:"#52B788"}}>{checked.length}/{TASKS.length}</span>
+                      <span className="text-sm font-semibold" style={{color:"#52B788"}}>{checked.length}/{displayTasks.length}</span>
                     </div>
                     <button className="text-sm font-semibold text-[#E8674A] hover:underline">View all →</button>
                   </div>
@@ -684,7 +695,7 @@ function Dashboard({onDetail,onConflict,onOpps,onInfoGap,cleanedFeed}:{onDetail:
 
                 {/* Task rows */}
                 <div className="divide-y divide-[#FAF5F0]">
-                  {TASKS.map(task=>{
+                  {displayTasks.map(task=>{
                     const done=checked.includes(task.id);
                     const t=P[task.p];
                     return (
