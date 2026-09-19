@@ -1203,7 +1203,14 @@ export default function App() {
     branch: string;
     interests: string[];
   } | null>(null);
-    const { isLoaded } = useAuth();
+    const { isLoaded, isSignedIn } = useAuth();
+
+useEffect(() => {
+  if (isLoaded && isSignedIn) {
+    setScreen("sources");
+    setShowSignIn(false);
+  }
+}, [isLoaded, isSignedIn]);
     if (!isLoaded) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FAF7F2]">
