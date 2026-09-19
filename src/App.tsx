@@ -1193,7 +1193,7 @@ function InfoGap({back}:{back:()=>void}) {
 
 // ─── Root ─────────────────────────────────────────────────────────────────────
 export default function App() {
-  const [screen, setScreen] = useState<Screen>("dash");
+  const [screen, setScreen] = useState<Screen>("sources");
   const [taskId, setTaskId] = useState("1");
   const [showSignIn, setShowSignIn] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
