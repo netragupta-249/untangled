@@ -14,6 +14,34 @@ import { Show, UserButton , SignUp, useAuth} from "@clerk/react";
 type Screen = "welcome"|"personal"|"sources"|"processing"|"dash"|"detail"|"conflict"|"opps"|"updates"|"info-gap";
 type NavItem = "overview"|"action"|"schedule"|"opps"|"updates";
 type Priority = "urgent"|"important"|"upcoming"|"opportunity"|"missing"|"action";
+const runAutonomousUnclutter = async (messageList: string[]) => {
+  const formattedInputStream = messageList.map(msg => `- ${msg}`).join("\n");
+
+  const systemPrompt =
+    "You are an AI notification sorting engine for university students. " +
+    "Analyze the messages, merge duplicate topics, remove casual chatter, " +
+    "identify deadlines and urgency. Return ONLY a JSON array with objects " +
+    "containing urgency, headline, action_item and deadline.";
+
+  try {
+    const response = await fetch("http://127.0.0.1:11434/api/generate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "phi3",
+        prompt: `${systemPrompt}\n\nMessages:\n${formattedInputStream}`,
+        stream: false,
+        options: { temperature: 0.0 }
+      })
+    });
+
+    const rawData = await response.json();
+    return JSON.parse(rawData.response.trim());
+  } catch (error) {
+    console.error("AI connection error:", error);
+    return [];
+  }
+};
 
 // ─── Tokens ───────────────────────────────────────────────────────────────────
 const P: Record<Priority,{bg:string;text:string;border:string;label:string;dot?:string}> = {
@@ -361,6 +389,27 @@ function Personal({
 
 // ─── SCREEN 3: Sources ────────────────────────────────────────────────────────
 function Sources({go}:{go:()=>void}) {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handlePurifyFeeds = async () => {
+    setIsLoading(true);
+
+    const rawMessyMessages = [
+      "CR Rahul (WhatsApp): Mid-sem dates changed! Operating Systems test is shifted to Monday morning.",
+      "Prof. Roy (Email): The OS evaluation originally scheduled for Friday will now take place on Monday.",
+      "Aman (WhatsApp): Hey, is the OS exam on Monday now?",
+      "Hostel Warden: Clear messy corridors or face disciplinary actions.",
+      "Rohan (Discord): Who wants to order food from the campus cafe?"
+    ];
+
+    const purifiedTimeline =
+      await runAutonomousUnclutter(rawMessyMessages);
+
+    console.log("AI RESULT:", purifiedTimeline);
+
+    setIsLoading(false);
+    go();
+  };
   const srcs = [
     {name:"College Email",icon:"📧",count:23,color:"#4A90E0",bg:"#EEF4FE",border:"#B8D0F8"},
     {name:"Class Groups",icon:"💬",count:47,color:"#8B6FE8",bg:"#F2EEFE",border:"#C8BCE8"},
@@ -413,7 +462,9 @@ function Sources({go}:{go:()=>void}) {
           </C>
 
           <div className="text-center">
-            <GradBtn onClick={go}>Sync Everything →</GradBtn>
+            <GradBtn onClick={handlePurifyFeeds}>
+  {isLoading ? "Untangling..." : "Sync Everything →"}
+</GradBtn>
             <p className="text-xs text-[#B0A898] mt-3 max-w-sm mx-auto">
               Untangled organizes your updates without hiding opportunities or filling gaps with assumptions.
             </p>
