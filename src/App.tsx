@@ -1313,7 +1313,7 @@ useEffect(() => {
 
 <Show when="signed-in">
   {screen==="personal"   && <Personal go={()=>setScreen("sources")}/>}
-  {screen==="sources"    && <Sources go={()=>setScreen("processing")}/>}
+  {screen==="sources"    && <Sources go={()=>setScreen("processing")} setCleanedFeed={setCleanedFeed}/>}
   {screen==="processing" && <Processing go={()=>setScreen("dash")}/>}
   {screen==="dash"       && <Dashboard cleanedFeed={cleanedFeed}
     onDetail={id=>{setTaskId(id);setScreen("detail");}}
