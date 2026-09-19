@@ -27,7 +27,7 @@ const runAutonomousUnclutter = async (messageList: string[]) => {
     const response = await fetch("/api/process-feeds", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+      body: JSON.stringify({ messages: messageList,
         model: "phi3",
         prompt: `${systemPrompt}\n\nMessages:\n${formattedInputStream}`,
         stream: false,
